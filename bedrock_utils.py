@@ -35,7 +35,7 @@ def query_knowledge_base(query, kb_id):
 def generate_response(prompt, model_id, temperature, top_p):
     try:
         response = "" #TODO model invokation call
-        return json.loads(response['body'].read())['completion']
+        return json.loads(response['body'].read())['content'][0]["text"]
     except ClientError as e:
         print(f"Error generating response: {e}")
         return ""

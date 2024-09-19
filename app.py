@@ -30,7 +30,7 @@ if prompt := st.chat_input("What would you like to know?"):
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    if valid_prompt(prompt):
+    if valid_prompt(prompt, model_id):
         # Query Knowledge Base
         kb_results = query_knowledge_base(prompt, kb_id)
         

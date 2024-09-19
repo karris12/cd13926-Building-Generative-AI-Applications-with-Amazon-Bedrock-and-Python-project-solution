@@ -14,19 +14,19 @@ bedrock_kb = boto3.client(
     region_name='us-west-2'  # Replace with your AWS region
 )
 
+def prompt_validation(query):
+    try:
+        #TODO implement a validation of the prompt
+
+        return True
+
+    except ClientError as e:
+        print(f"Error validating prompt")
+        return False
+
 def query_knowledge_base(query, kb_id):
     try:
-        response = bedrock_kb.retrieve(
-            knowledgeBaseId=kb_id,
-            retrievalQuery={
-                'text': query
-            },
-            retrievalConfiguration={
-                'vectorSearchConfiguration': {
-                    'numberOfResults': 3
-                }
-            }
-        )
+        response = "" #TODO knowledge base invokation call
         return response['retrievalResults']
     except ClientError as e:
         print(f"Error querying Knowledge Base: {e}")
@@ -34,17 +34,7 @@ def query_knowledge_base(query, kb_id):
 
 def generate_response(prompt, model_id, temperature, top_p):
     try:
-        response = bedrock.invoke_model(
-            modelId=model_id,
-            contentType='application/json',
-            accept='application/json',
-            body=json.dumps({
-                "prompt": prompt,
-                "max_tokens_to_sample": 500,
-                "temperature": temperature,
-                "top_p": top_p,
-            })
-        )
+        response = "" #TODO model invokation call
         return json.loads(response['body'].read())['completion']
     except ClientError as e:
         print(f"Error generating response: {e}")

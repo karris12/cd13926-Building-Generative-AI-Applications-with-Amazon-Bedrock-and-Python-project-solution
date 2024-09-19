@@ -2,7 +2,7 @@ import streamlit as st
 import boto3
 from botocore.exceptions import ClientError
 import json
-from bedrock_utils import query_knowledge_base, generate_response, prompt_validation
+from bedrock_utils import query_knowledge_base, generate_response, valid_prompt
 
 
 # Streamlit UI
@@ -30,7 +30,7 @@ if prompt := st.chat_input("What would you like to know?"):
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    if prompt_validation(prompt):
+    if valid_prompt(prompt):
         # Query Knowledge Base
         kb_results = query_knowledge_base(prompt, kb_id)
         

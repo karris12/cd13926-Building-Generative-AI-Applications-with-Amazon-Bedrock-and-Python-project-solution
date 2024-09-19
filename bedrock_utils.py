@@ -14,7 +14,7 @@ bedrock_kb = boto3.client(
     region_name='us-west-2'  # Replace with your AWS region
 )
 
-def prompt_validation(query):
+def valid_prompt(query):
     try:
         #TODO implement a validation of the prompt
 

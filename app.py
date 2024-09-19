@@ -38,7 +38,7 @@ if prompt := st.chat_input("What would you like to know?"):
         context = "\n".join([result['content']['text'] for result in kb_results])
         
         # Generate response using LLM
-        full_prompt = f"Human:Context: {context}\n\nUser: {prompt}\n\nAssistant:"
+        full_prompt = f"Context: {context}\n\nUser: {prompt}\n\n"
         response = generate_response(full_prompt, model_id, temperature, top_p)
     else:
         response = "I'm unable to answer this, please try again"

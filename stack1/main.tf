@@ -40,20 +40,18 @@ resource "random_password" "aurora_master_password" {
 # ------------------------
 # AURORA SERVERLESS MODULE
 # ------------------------
-module "aurora_serverless" {
-  source = "../modules/database"
-
-  cluster_identifier = "my-aurora-serverless"
-  vpc_id             = module.vpc.vpc_id
-  subnet_ids         = module.vpc.private_subnets
-
-  database_name       = "myapp"
-  master_username     = "dbadmin"
-  master_password     = random_password.aurora_master_password.result
-  max_capacity        = 1
-  min_capacity        = 0.5
-  allowed_cidr_blocks = ["10.0.0.0/16"]
-}
+# module "aurora_serverless" {
+#   source = "../modules/database"
+#   cluster_identifier = "my-aurora-serverless"
+#   vpc_id             = module.vpc.vpc_id
+#   subnet_ids         = module.vpc.private_subnets
+#   database_name       = "myapp"
+#   master_username     = "dbadmin"
+#   master_password     = random_password.aurora_master_password.result
+#   max_capacity        = 1
+#   min_capacity        = 0.5
+#   allowed_cidr_blocks = ["10.0.0.0/16"]
+# }
 
 # ------------------------
 # AWS ACCOUNT INFO
